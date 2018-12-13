@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ import java.util.Map;
 
 @Api(value="身份证识别模块")
 @RestController
+@RequestMapping("/api")
 public class IDCardController {
     @Autowired
     private IDCardService idCardService;
@@ -35,6 +37,9 @@ public class IDCardController {
 //
 //        return idCardInfo;
 //    }
+
+    @Value("${uploadpic.path}")
+    private String uploadPicPath;
 
     /**
      * 识别身份证正面照片文字，返回JSON格式
@@ -55,7 +60,8 @@ public class IDCardController {
             return result;
         }
 
-        String path = this.getClass().getResource("/").getPath() + "upload";
+        //String path = this.getClass().getResource("/").getPath() + "static/upload";
+        String path = uploadPicPath;
         System.out.println("######path=" + path);
         if (FileUtil.upload(file, path, file.getOriginalFilename())){
             // 上传成功，给出页面提示
