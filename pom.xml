@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.benxiaopao</groupId>
-    <artifactId>idcard_recognize</artifactId>
+    <artifactId>idcard_recognize2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>idcard_recognize</name>
